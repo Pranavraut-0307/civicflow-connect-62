@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthorityRouteImport } from './routes/authority'
 import { Route as CitizenRouteImport } from './routes/citizen'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as ReportRouteImport } from './routes/report'
 import { Route as TrackRouteImport } from './routes/track'
@@ -30,6 +31,11 @@ const AuthorityRoute = AuthorityRouteImport.update({
 const CitizenRoute = CitizenRouteImport.update({
   id: '/citizen',
   path: '/citizen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MapRoute = MapRouteImport.update({
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/authority': typeof AuthorityRoute
   '/citizen': typeof CitizenRoute
+  '/login': typeof LoginRoute
   '/map': typeof MapRoute
   '/report': typeof ReportRoute
   '/track': typeof TrackRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/authority': typeof AuthorityRoute
   '/citizen': typeof CitizenRoute
+  '/login': typeof LoginRoute
   '/map': typeof MapRoute
   '/report': typeof ReportRoute
   '/track': typeof TrackRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/authority': typeof AuthorityRoute
   '/citizen': typeof CitizenRoute
+  '/login': typeof LoginRoute
   '/map': typeof MapRoute
   '/report': typeof ReportRoute
   '/track': typeof TrackRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/authority'
     | '/citizen'
+    | '/login'
     | '/map'
     | '/report'
     | '/track'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/authority'
     | '/citizen'
+    | '/login'
     | '/map'
     | '/report'
     | '/track'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/authority'
     | '/citizen'
+    | '/login'
     | '/map'
     | '/report'
     | '/track'
@@ -115,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthorityRoute: typeof AuthorityRoute
   CitizenRoute: typeof CitizenRoute
+  LoginRoute: typeof LoginRoute
   MapRoute: typeof MapRoute
   ReportRoute: typeof ReportRoute
   TrackRoute: typeof TrackRoute
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/citizen'
       fullPath: '/citizen'
       preLoaderRoute: typeof CitizenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/map': {
@@ -179,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthorityRoute: AuthorityRoute,
   CitizenRoute: CitizenRoute,
+  LoginRoute: LoginRoute,
   MapRoute: MapRoute,
   ReportRoute: ReportRoute,
   TrackRoute: TrackRoute,
