@@ -130,9 +130,10 @@ function ComplaintDetails() {
               </CardHeader>
               <CardContent>
                 <div className="flex h-56 flex-col items-center justify-center gap-2 rounded-xl border border-dashed bg-muted/40 text-center">
-                  <span className="text-3xl" aria-hidden="true">
-                    {CATEGORY_META[complaint.category].icon}
-                  </span>
+                  {(() => {
+                    const Icon = CATEGORY_META[complaint.category].icon;
+                    return <Icon className="size-8 text-muted-foreground" aria-hidden="true" />;
+                  })()}
                   <p className="text-sm font-medium">Citizen photo evidence</p>
                   <p className="max-w-[220px] text-xs text-muted-foreground">
                     Demo placeholder — uploaded media will render here from storage.

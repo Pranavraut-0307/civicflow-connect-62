@@ -96,7 +96,7 @@ export function CityMap({
               "flex size-7 items-center justify-center",
             )}
           >
-            <span aria-hidden="true">{meta.icon}</span>
+            <meta.icon className="size-3.5" aria-hidden="true" />
             {isOpen && complaint.priority === "critical" && (
               <span className="animate-marker-ping absolute inset-0 rounded-full bg-destructive/40" />
             )}

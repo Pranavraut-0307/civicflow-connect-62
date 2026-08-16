@@ -91,7 +91,7 @@ function ReportIssue() {
                   <SelectContent>
                     {(Object.keys(CATEGORY_META) as IssueCategory[]).map((key) => (
                       <SelectItem key={key} value={key}>
-                        {CATEGORY_META[key].icon} {CATEGORY_META[key].label}
+                        {CATEGORY_META[key].label}
                       </SelectItem>
                     ))}
                   </SelectContent>

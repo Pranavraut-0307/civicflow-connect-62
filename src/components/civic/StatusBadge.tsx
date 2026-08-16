@@ -48,7 +48,7 @@ export function CategoryBadge({
   const meta = CATEGORY_META[category];
   return (
     <span className={cn(base, "bg-secondary text-secondary-foreground", className)}>
-      <span aria-hidden="true">{meta.icon}</span>
+      <meta.icon className="size-3.5" aria-hidden="true" />
       {meta.label}
     </span>
   );

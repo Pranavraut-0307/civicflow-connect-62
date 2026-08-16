@@ -120,17 +120,18 @@ function Landing() {
           </div>
 
           <div className="animate-rise grid grid-cols-2 gap-3 self-center">
-            {(Object.keys(CATEGORY_META) as IssueCategory[]).slice(0, 6).map((k) => (
-              <div
-                key={k}
-                className="rounded-2xl border border-primary-foreground/20 bg-primary-foreground/10 p-4 text-primary-foreground backdrop-blur-sm"
-              >
-                <span className="text-2xl" aria-hidden="true">
-                  {CATEGORY_META[k].icon}
-                </span>
-                <p className="mt-2 text-sm font-semibold">{CATEGORY_META[k].label}</p>
-              </div>
-            ))}
+            {(Object.keys(CATEGORY_META) as IssueCategory[]).slice(0, 6).map((k) => {
+              const Icon = CATEGORY_META[k].icon;
+              return (
+                <div
+                  key={k}
+                  className="rounded-2xl border border-primary-foreground/20 bg-primary-foreground/10 p-4 text-primary-foreground backdrop-blur-sm"
+                >
+                  <Icon className="size-6" aria-hidden="true" />
+                  <p className="mt-2 text-sm font-semibold">{CATEGORY_META[k].label}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

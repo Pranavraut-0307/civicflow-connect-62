@@ -94,7 +94,7 @@ function IssueMapPage() {
                 <SelectItem value="all">All categories</SelectItem>
                 {(Object.keys(CATEGORY_META) as IssueCategory[]).map((k) => (
                   <SelectItem key={k} value={k}>
-                    {CATEGORY_META[k].icon} {CATEGORY_META[k].label}
+                    {CATEGORY_META[k].label}
                   </SelectItem>
                 ))}
               </SelectContent>
