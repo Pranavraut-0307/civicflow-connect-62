@@ -27,10 +27,10 @@ export function CityMap({
   showLegend = true,
 }: {
   items: Complaint[];
-  className?: string;
-  selectedId?: string;
-  onSelect?: (c: Complaint) => void;
-  showLegend?: boolean;
+  className?: string | undefined;
+  selectedId?: string | undefined;
+  onSelect?: ((c: Complaint) => void) | undefined;
+  showLegend?: boolean | undefined;
 }) {
   const markers = useMemo(
     () => items.map((c) => ({ complaint: c, ...project(c.lat, c.lng) })),

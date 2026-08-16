@@ -10,14 +10,21 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthorityRouteImport } from './routes/authority'
 import { Route as CitizenRouteImport } from './routes/citizen'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as ReportRouteImport } from './routes/report'
 import { Route as TrackRouteImport } from './routes/track'
+import { Route as ComplaintIdRouteImport } from './routes/complaint.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthorityRoute = AuthorityRouteImport.update({
+  id: '/authority',
+  path: '/authority',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CitizenRoute = CitizenRouteImport.update({
@@ -40,43 +47,78 @@ const TrackRoute = TrackRouteImport.update({
   path: '/track',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ComplaintIdRoute = ComplaintIdRouteImport.update({
+  id: '/complaint/$id',
+  path: '/complaint/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/authority': typeof AuthorityRoute
   '/citizen': typeof CitizenRoute
   '/map': typeof MapRoute
   '/report': typeof ReportRoute
   '/track': typeof TrackRoute
+  '/complaint/$id': typeof ComplaintIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/authority': typeof AuthorityRoute
   '/citizen': typeof CitizenRoute
   '/map': typeof MapRoute
   '/report': typeof ReportRoute
   '/track': typeof TrackRoute
+  '/complaint/$id': typeof ComplaintIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/authority': typeof AuthorityRoute
   '/citizen': typeof CitizenRoute
   '/map': typeof MapRoute
   '/report': typeof ReportRoute
   '/track': typeof TrackRoute
+  '/complaint/$id': typeof ComplaintIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/citizen' | '/map' | '/report' | '/track'
+  fullPaths:
+    | '/'
+    | '/authority'
+    | '/citizen'
+    | '/map'
+    | '/report'
+    | '/track'
+    | '/complaint/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/citizen' | '/map' | '/report' | '/track'
-  id: '__root__' | '/' | '/citizen' | '/map' | '/report' | '/track'
+  to:
+    | '/'
+    | '/authority'
+    | '/citizen'
+    | '/map'
+    | '/report'
+    | '/track'
+    | '/complaint/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/authority'
+    | '/citizen'
+    | '/map'
+    | '/report'
+    | '/track'
+    | '/complaint/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthorityRoute: typeof AuthorityRoute
   CitizenRoute: typeof CitizenRoute
   MapRoute: typeof MapRoute
   ReportRoute: typeof ReportRoute
   TrackRoute: typeof TrackRoute
+  ComplaintIdRoute: typeof ComplaintIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -86,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/authority': {
+      id: '/authority'
+      path: '/authority'
+      fullPath: '/authority'
+      preLoaderRoute: typeof AuthorityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/citizen': {
@@ -116,15 +165,24 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrackRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/complaint/$id': {
+      id: '/complaint/$id'
+      path: '/complaint/$id'
+      fullPath: '/complaint/$id'
+      preLoaderRoute: typeof ComplaintIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthorityRoute: AuthorityRoute,
   CitizenRoute: CitizenRoute,
   MapRoute: MapRoute,
   ReportRoute: ReportRoute,
   TrackRoute: TrackRoute,
+  ComplaintIdRoute: ComplaintIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
