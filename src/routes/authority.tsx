@@ -128,6 +128,7 @@ function AuthorityDashboard() {
                   stroke="var(--chart-1)"
                   strokeWidth={2.5}
                   dot={false}
+                  isAnimationActive={false}
                 />
                 <Line
                   type="monotone"
@@ -135,6 +136,7 @@ function AuthorityDashboard() {
                   stroke="var(--chart-4)"
                   strokeWidth={2.5}
                   dot={false}
+                  isAnimationActive={false}
                 />
               </LineChart>
             </ResponsiveContainer>
@@ -160,7 +162,7 @@ function AuthorityDashboard() {
                     fontSize: 12,
                   }}
                 />
-                <Bar dataKey="value" fill="var(--chart-2)" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="value" fill="var(--chart-2)" radius={[6, 6, 0, 0]} isAnimationActive={false} />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
