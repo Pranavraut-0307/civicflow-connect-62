@@ -43,14 +43,14 @@ export const Route = createFileRoute("/track")({
 
 function TrackComplaints() {
   const [query, setQuery] = useState("");
-  const [selectedId, setSelectedId] = useState(complaints[0].id);
+  const [selectedId, setSelectedId] = useState(complaints[0]!.id);
 
   const filtered = complaints.filter((c) =>
     `${c.id} ${c.title} ${c.location} ${CATEGORY_META[c.category].label}`
       .toLowerCase()
       .includes(query.toLowerCase()),
   );
-  const selected = complaints.find((c) => c.id === selectedId) ?? complaints[0];
+  const selected = complaints.find((c) => c.id === selectedId) ?? complaints[0]!;
 
   return (
     <AppShell nav={citizenNav} role="Citizen" userName={CITIZEN_NAME}>
