@@ -63,15 +63,15 @@ export interface Complaint {
 
 export const CATEGORY_META: Record<
   IssueCategory,
-  { label: string; icon: string; tone: string }
+  { label: string; icon: LucideIcon; tone: string }
 > = {
-  pothole: { label: "Pothole", icon: "🕳️", tone: "var(--chart-1)" },
-  "road-damage": { label: "Road Damage", icon: "🚧", tone: "var(--chart-3)" },
-  garbage: { label: "Garbage", icon: "🗑️", tone: "var(--chart-4)" },
-  drainage: { label: "Drainage", icon: "🌊", tone: "var(--chart-2)" },
-  streetlight: { label: "Broken Streetlight", icon: "💡", tone: "var(--chart-5)" },
-  "water-leakage": { label: "Water Leakage", icon: "💧", tone: "var(--chart-2)" },
-  other: { label: "Other", icon: "📌", tone: "var(--muted-foreground)" },
+  pothole: { label: "Pothole", icon: CircleDot, tone: "var(--chart-1)" },
+  "road-damage": { label: "Road Damage", icon: Construction, tone: "var(--chart-3)" },
+  garbage: { label: "Garbage", icon: Trash2, tone: "var(--chart-4)" },
+  drainage: { label: "Drainage", icon: Waves, tone: "var(--chart-2)" },
+  streetlight: { label: "Broken Streetlight", icon: Lightbulb, tone: "var(--chart-5)" },
+  "water-leakage": { label: "Water Leakage", icon: Droplets, tone: "var(--chart-2)" },
+  other: { label: "Other", icon: Pin, tone: "var(--muted-foreground)" },
 };
 
 export const STATUS_FLOW: IssueStatus[] = [
