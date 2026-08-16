@@ -1,3 +1,14 @@
+import {
+  CircleDot,
+  Construction,
+  Droplets,
+  Lightbulb,
+  Pin,
+  Trash2,
+  Waves,
+  type LucideIcon,
+} from "lucide-react";
+
 /**
  * CivilFlow mock data layer.
  *
